@@ -181,15 +181,24 @@ realizar_diagnostico :-
     ),
     writeln('======================================').
 
+
 % CASO 1: Equipo Obsoleto para uso Rudo o Medio
 diagnostico_urgente_cambio :-
-    respuesta(uso, U), U > 1,           % Uso Medio o Rudo
-    respuesta(nivel_cpu, bajo),         % CPU antigua
-    writeln('>> RECOMENDACION: COMPRAR EQUIPO NUEVO'),
-    writeln('Justificacion: Tu procesador es de una generacion antigua (Gen 4 o menor)'),
-    writeln('y no rendira bien para el uso Medio/Rudo que requieres.'),
-    writeln('Invertir en este equipo no aumentara significativamente su potencia de calculo.').
-
+    respuesta(uso, U), U > 1,            % Uso Medio o Alto
+    respuesta(nivel_cpu, bajo),          % CPU Legacy (Gen 4 o menor)
+    writeln('>> DICTAMEN: REEMPLAZO DE EQUIPO INMINENTE'),
+    writeln('----------------------------------------------------------------'),
+    writeln('Analisis Tecnico: La arquitectura del procesador es obsoleta (Legacy)'),
+    writeln('y no cuenta con el conjunto de instrucciones necesario para su carga'),
+    writeln('de trabajo actual. Invertir en este equipo no es financieramente viable.'),
+    writeln(''),
+    writeln('--- GESTION DE RESIDUOS Y RESPONSABILIDAD SOCIAL ---'),
+    writeln('Aunque el equipo no sirve para su trabajo, aun funciona para tareas basicas.'),
+    writeln('ACCION RECOMENDADA: No deseche este equipo en la basura comun.'),
+    writeln('1. DONACION: Entreguelo a una escuela o fundacion que necesite equipos ofimaticos.'),
+    writeln('2. RECICLAJE: Llevelo a un Centro de Acopio de Electronicos (RAEE) para'),
+    writeln('   asegurar que sus componentes no contaminen el medio ambiente.').
+    
 % CASO 2: Cuello de botella por Disco Mecanico (HDD)
 diagnostico_disco_duro :-
     respuesta(tipo_disco, 1),           % Tiene HDD
